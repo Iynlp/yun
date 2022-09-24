@@ -1,0 +1,22 @@
+{% extends 'white_dreams/base.html' %}
+
+{% block page_header %}
+<div class="jumbotron">
+	<h1 class="display-3">欢迎来到云日记平台</h1>
+
+	<p class="read">
+		在这，你可以记录你的生活，并添加关于你生活的主题。
+	</p>
+	<p class="read">你经历了关于某个主题的新东西时，
+		都可以写下相关内容，总结你的想法或规划。
+	</p>
+
+	{% if user.is_authenticated %}
+	<a class="btn btn-lg btn-primary" href="{% url 'white_dreams:titles' %}"
+	role="button">主题 &raquo</a>
+	{% else %}
+	<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+	role="button">注册 &raquo</a>
+	{% endif %}
+</div>
+{% endblock page_header %}

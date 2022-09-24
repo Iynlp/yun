@@ -1,0 +1,21 @@
+{% extends 'white_dreams/base.html' %}
+
+{% block page_header %}
+<h1>主题</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+<ul>
+	{% for title in titles %}
+	<li><h3>
+		<a href="{% url 'white_dreams:title' title.id %}">{{ title }}</a>
+	</h3></li>
+	{% empty %}
+	<li><h4>你还未添加任何主题</h4></li>
+	{% endfor %}
+</ul>
+
+<h5><a href="{% url 'white_dreams:new_title' %}">添加主题</a></h5>
+
+{% endblock content %}

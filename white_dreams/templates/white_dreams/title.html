@@ -1,0 +1,27 @@
+{% extends 'white_dreams/base.html' %}
+
+{% block page_header %}
+<h3>{{ title }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+
+<p>
+	<a href="{% url 'white_dreams:new_write' title.id %}">添加内容</a>
+</p>
+
+{% for write in writes %}
+<div class="card mb-3">
+	<h4 class="card-header">
+		{{ write.date_added|date:'Y.M.d H:i' }}
+	</h4>
+	<div class="card-body">
+		{{ write.text|linebreaks }}		
+	</div>
+</div>
+
+{% empty %}
+<p>当前主题还未添加内容</p>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'white_dreams/base.html' %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h2>添加内容</h2>
+{% endblock page_header %}
+
+{% block content %}
+<h5><a href="{% url 'white_dreams:title' title.id %}">回到{{ title }}</a></h5>
+<p>添加内容:</p>
+
+<form action="{% url 'white_dreams:new_write' title.id %}" method="POST" class="form">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+
+	{% buttons %}
+	<button name="submit" class="btn btn-primary">添加</button>
+	{% endbuttons %}
+
+	<input type="hidden" name="next"
+	value="{% url 'white_dreams:title' title.id %}" />
+
+</form>
+
+{% endblock content %}
